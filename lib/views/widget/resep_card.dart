@@ -5,14 +5,12 @@ import '../detail_video.dart';
 
 class ResepCard extends StatelessWidget {
   final String title;
-  final String rating;
   final String cockTime;
   final String thumbnailUrl;
   final String videoUrl;
 
   const ResepCard(
       {required this.title,
-      required this.rating,
       required this.cockTime,
       required this.thumbnailUrl,
       required this.videoUrl});
@@ -59,7 +57,7 @@ class ResepCard extends StatelessWidget {
               children: [
                 Visibility(
                   visible: videoUrl != 'noVideo' ? true : false,
-                  child: Container( //container untuk rating
+                  child: Container(
                     padding: EdgeInsets.all(5),
                     margin: EdgeInsets.all(10),
                     decoration: BoxDecoration(

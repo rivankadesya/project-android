@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:video_player/video_player.dart';
 
 class DetailVideo extends StatefulWidget {
@@ -39,15 +40,14 @@ class _DetailVideoState extends State<DetailVideo> {
     return Scaffold(
       appBar: AppBar(
         title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.restaurant_menu),
             SizedBox(
               width: 10,
             ),
-            Text('Video Tutorial')
+            Text("Video Tutorial",style: GoogleFonts.aBeeZee(color: Colors.white),)
           ],
-        ),
+        ),backgroundColor: Colors.brown,
+
       ),
       body: Center(
         child: Container(

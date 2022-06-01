@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project/views/home.dart';
-import 'package:project/my_dashboard.dart';
 import 'package:project/views/login_page.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 
 void main() {
@@ -17,7 +14,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.brown,
       ),
       home: LoginPage(),
     );

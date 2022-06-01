@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:project/model/resep.dart';
 import 'package:project/views/widget/resep_card.dart';
 
 class DetailResep extends StatelessWidget {
   final String name;
   final String images;
-  final String rating;
   final String totalTime;
   final String description;
   final String videoUrl;
@@ -15,7 +15,6 @@ class DetailResep extends StatelessWidget {
   DetailResep({
     required this.name,
     required this.images,
-    required this.rating,
     required this.totalTime,
     required this.description,
     required this.videoUrl,
@@ -32,13 +31,11 @@ class DetailResep extends StatelessWidget {
       appBar: AppBar(
         title: Row(
           children: [
-            Icon(Icons.restaurant_menu),
-            SizedBox(
-              width: 10,
-            ),
-            Text('Resep Makanan')
+            Icon(Icons.restaurant_menu,color: Colors.white,),
+            Text('${name}',style: GoogleFonts.aBeeZee(color: Colors.white),)
           ],
-        ),
+        ),backgroundColor: Colors.brown,
+
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -47,7 +44,6 @@ class DetailResep extends StatelessWidget {
             children: [
               ResepCard(
                   title: name,
-                  rating: rating,
                   cockTime: totalTime,
                   thumbnailUrl: images,
                   videoUrl: videoUrl),
@@ -76,31 +72,6 @@ class DetailResep extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        'Instructions',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14),
-                      ),
-                    ),
-                    Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ListView.builder(
-                            itemCount: instructions.length,
-                            shrinkWrap: true,
-                            itemBuilder: (context, index) {
-                              return ListTile(
-                                title: Text(
-                                  instructions[index].displayText,
-                                  style: TextStyle(
-                                      color: Colors.black, fontSize: 14),
-                                  textAlign: TextAlign.justify,
-                                ),
-                              );
-                            })),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
                         'Ingredients',
                         style: TextStyle(
                             color: Colors.black,
@@ -117,6 +88,31 @@ class DetailResep extends StatelessWidget {
                               return ListTile(
                                 title: Text(
                                   components[index].rawText,
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 14),
+                                  textAlign: TextAlign.justify,
+                                ),
+                              );
+                            })),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        'Instructions',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14),
+                      ),
+                    ),
+                    Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ListView.builder(
+                            itemCount: instructions.length,
+                            shrinkWrap: true,
+                            itemBuilder: (context, index) {
+                              return ListTile(
+                                title: Text(
+                                  instructions[index].displayText,
                                   style: TextStyle(
                                       color: Colors.black, fontSize: 14),
                                   textAlign: TextAlign.justify,

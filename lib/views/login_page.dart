@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../my_dashboard.dart';
 import 'home.dart';
 
 class LoginPage extends StatefulWidget {
@@ -117,7 +116,7 @@ class _LoginPageState extends State<LoginPage> {
                       String username = username_controller.text;
                       String password = password_controller.text;
 
-                      if (username != '' && password != '') {
+                      if (username == 'rivanka' && password == 'desya') {
                         print('Successfull');
                         logindata.setBool('login', false);
                         logindata.setString('username', username);
@@ -126,7 +125,7 @@ class _LoginPageState extends State<LoginPage> {
                       }
                     },
                     child: Text("Sign In"
-                        ,style: TextStyle(color: Colors.white)),
+                        ,style: TextStyle(color: Colors.white,fontSize: 20)),
                   ),
                 )
               ],
@@ -149,7 +148,7 @@ class _LoginPageState extends State<LoginPage> {
     print(newuser);
     if (newuser == false) {
       Navigator.pushReplacement(
-          context, new MaterialPageRoute(builder: (context) => MyDashboard()));
+          context, new MaterialPageRoute(builder: (context) => HomePage()));
     }
   }
 

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:project/model/resep.api.dart';
+import 'package:project/views/login_page.dart';
 import 'package:project/views/widget/resep_card.dart';
 import 'package:project/model/resep.dart';
 import 'package:project/views/widget/detail_resep.dart';
@@ -39,51 +41,54 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(Icons.restaurant_menu),
-              SizedBox(
-                width: 10,
-              ),
-              Text('Resep Makanan')
-            ],
-          ),
-        ),
-        body: _isLoading
-            ? Center(child: CircularProgressIndicator())
-            : ListView.builder(
-                itemCount: _resep.length,
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                    child: ResepCard(
-                        title: _resep[index].name,
-                        rating: _resep[index].rating.toString(),
-                        cockTime: _resep[index].totalTime,
-                        thumbnailUrl: _resep[index].images,
-                        videoUrl: _resep[index].videoUrl),
-                    onTap: () => {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => DetailResep(
-                            name: _resep[index].name,
-                            totalTime: _resep[index].totalTime.toString(),
-                            images: _resep[index].images,
-                            rating: _resep[index].rating,
-                            description: _resep[index].description,
-                            videoUrl: _resep[index].videoUrl,
-                            instructions: _resep[index].instructions,
-                            sections: _resep[index].sections,
-                          ),
+      appBar: AppBar(
+        title: Text('Resep Masakan',style: GoogleFonts.aBeeZee(),),
+        backgroundColor: Colors.brown,
+        elevation: 4.0,
+        actions: [
+          IconButton(onPressed: () {
+    logindata.setBool('login', true);
+    Navigator.pushReplacement(context,
+    new MaterialPageRoute(builder: (context) => LoginPage()));
+    }, icon: Icon(Icons.logout))
+        ],
+        automaticallyImplyLeading: false,
+      ),
+      body: _isLoading
+          ? Center(child: CircularProgressIndicator())
+          : ListView.builder(
+              itemCount: _resep.length,
+              itemBuilder: (context, index) {
+                return GestureDetector(
+                  child: ResepCard(
+                      title: _resep[index].name,
+                      cockTime: _resep[index].totalTime,
+                      thumbnailUrl: _resep[index].images,
+                      videoUrl: _resep[index].videoUrl),
+                  onTap: () => {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DetailResep(
+                          name: _resep[index].name,
+                          totalTime: _resep[index].totalTime.toString(),
+                          images: _resep[index].images,
+                          description: _resep[index].description,
+                          videoUrl: _resep[index].videoUrl,
+                          instructions: _resep[index].instructions,
+                          sections: _resep[index].sections,
                         ),
-                      )
-                    },
-                  );
-                }));
+                      ),
+                    )
+                  },
+                );
+              }),
+
+    );
   }
 }
